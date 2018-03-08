@@ -11,8 +11,8 @@ public class Driver {
 
     public Driver(Figure[] figures) {
         final String SPACE = " ";
-        for (Figure o : figures) {
-            System.out.print(o.getFigure() + SPACE);
+        for (Figure f : figures) {
+            System.out.print(f.getFigure() + SPACE);
         }
     }
 
