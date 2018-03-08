@@ -1,6 +1,6 @@
 package fpp.midtermpractice;
 
-class ParallelMaker extends Maker{
+class ParallelMaker extends Figure {
     
     String figure = "||";
     

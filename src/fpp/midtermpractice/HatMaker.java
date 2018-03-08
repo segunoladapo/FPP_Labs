@@ -1,6 +1,6 @@
 package fpp.midtermpractice;
 
-class HatMaker extends Maker {
+class HatMaker extends Figure {
     String figure = "/\\";
 
     public String getFigure() {

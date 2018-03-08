@@ -1,6 +1,6 @@
 package fpp.midtermpractice;
 
-public abstract class Maker {
+public abstract class Figure {
 
     abstract String getFigure();
 }

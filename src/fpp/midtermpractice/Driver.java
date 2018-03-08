@@ -2,16 +2,16 @@ package fpp.midtermpractice;
 
 public class Driver {
     public static void main(String[] args) {
-        Maker[] objArr = {new HatMaker(),
+        Figure[] objArr = {new HatMaker(),
                 new HatMaker(),
                 new VeeMaker(),
                 new ParallelMaker()};
         new Driver(objArr);
     }
 
-    public Driver(Maker[] figures) {
+    public Driver(Figure[] figures) {
         final String SPACE = " ";
-        for (Maker o : figures) {
+        for (Figure o : figures) {
             System.out.print(o.getFigure() + SPACE);
         }
     }

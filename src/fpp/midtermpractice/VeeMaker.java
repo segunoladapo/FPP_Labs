@@ -1,6 +1,6 @@
 package fpp.midtermpractice;
 
-class VeeMaker  extends Maker{
+class VeeMaker  extends Figure {
     String figure = "\\/";
     
     public String getFigure() {
