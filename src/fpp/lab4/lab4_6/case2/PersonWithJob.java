@@ -5,7 +5,7 @@ import java.util.GregorianCalendar;
 /**
  * Created by segun on 3/4/2018.
  */
-public class PersonWithJob extends Person {
+public final class PersonWithJob extends Person {
     private double salary;
 
     PersonWithJob(String n, GregorianCalendar dob, double s) {
