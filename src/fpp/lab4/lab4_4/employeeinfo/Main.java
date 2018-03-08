@@ -23,14 +23,11 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         String answer = sc.next();
         if (answer.equalsIgnoreCase("A")) {
-            displayAllEmployee(emps);
-            String selectedEmployeeIndex = sc.next();
-            displayAllAccounts(emps[Integer.valueOf(selectedEmployeeIndex)]);
-
+            displayAllAccounts(emps);
         } else if (answer.equalsIgnoreCase("B")) {
             displayAllEmployee(emps);
             String selectedEmployeeIndex = sc.next();
-            displayAllAccounts(emps[Integer.valueOf(selectedEmployeeIndex)]);
+            displayEmployeeAccount(emps[Integer.valueOf(selectedEmployeeIndex)]);
             System.out.println("Select an account: (type a number) ");
             String selectedAccountIndex = sc.next();
             System.out.println("Deposit amount ");
@@ -39,7 +36,7 @@ public class Main {
         } else if (answer.equalsIgnoreCase("C")) {
             displayAllEmployee(emps);
             String selectedEmployeeIndex = sc.next();
-            displayAllAccounts(emps[Integer.valueOf(selectedEmployeeIndex)]);
+            displayEmployeeAccount(emps[Integer.valueOf(selectedEmployeeIndex)]);
             System.out.println("Select an account: (type a number) ");
             String selectedAccountIndex = sc.next();
             System.out.println("Amount to withdrawal : ");
@@ -51,10 +48,10 @@ public class Main {
     }
 
     public static void displayMenu() {
-        System.out.print("A. See a report of all account? (y/n) ");
-        System.out.print("B. Make a deposit ");
-        System.out.print("C. See a report of all account? (y/n) ");
-        System.out.print("Make a selection (A/B/C)");
+        System.out.println("A. See a report of all account? (y/n) ");
+        System.out.println("B. Make a deposit ");
+        System.out.println("C. Make a withdrawal. ");
+        System.out.println("Make a selection (A/B/C)");
     }
 
     public static void displayAllEmployee(Employee[] employees) {
@@ -65,13 +62,20 @@ public class Main {
 
     }
 
-    public static void displayAllAccounts(Employee employee) {
+    public static void displayEmployeeAccount(Employee employee) {
         System.out.println(employee.getFormattedAcctInfo());
+    }
+
+    public static void displayAllAccounts(Employee[] employees) {
+        for (Employee employee : employees) {
+            System.out.println(employee.toString());
+            System.out.println(employee.getFormattedAcctInfo());
+        }
     }
 
     public static void makeDeposit(int accountIndex, double amount, Employee employee) {
         employee.deposit(accountIndex, amount);
-        System.out.println(amount + " has been deposited in the " + employee.getAccountList().get(accountIndex)
+        System.out.println(amount + " has been deposited in the " + employee.getAccountList().get(accountIndex).getAcctType()
                 + " account of " + employee.toString());
     }
 
