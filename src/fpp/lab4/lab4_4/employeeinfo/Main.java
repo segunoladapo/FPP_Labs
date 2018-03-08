@@ -1,5 +1,6 @@
 package fpp.lab4.lab4_4.employeeinfo;
 
+import java.util.EnumMap;
 import java.util.Scanner;
 
 public class Main {
@@ -22,32 +23,61 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         String answer = sc.next();
         if (answer.equalsIgnoreCase("A")) {
-            for (Employee employee : emps) {
-                System.out.println("ACCOUNT INFO FOR " + employee.toString());
-                String info = employee.getFormattedAcctInfo();
-                System.out.println(info);
-            }
-            //display info to console
+            displayAllEmployee(emps);
+            String selectedEmployeeIndex = sc.next();
+            displayAllAccounts(emps[Integer.valueOf(selectedEmployeeIndex)]);
+
+        } else if (answer.equalsIgnoreCase("B")) {
+            displayAllEmployee(emps);
+            String selectedEmployeeIndex = sc.next();
+            displayAllAccounts(emps[Integer.valueOf(selectedEmployeeIndex)]);
+            System.out.println("Select an account: (type a number) ");
+            String selectedAccountIndex = sc.next();
+            System.out.println("Deposit amount ");
+            String depositAmount = sc.next();
+            makeDeposit(Integer.valueOf(selectedAccountIndex), Double.valueOf(depositAmount), emps[Integer.valueOf(selectedEmployeeIndex)]);
+        } else if (answer.equalsIgnoreCase("C")) {
+            displayAllEmployee(emps);
+            String selectedEmployeeIndex = sc.next();
+            displayAllAccounts(emps[Integer.valueOf(selectedEmployeeIndex)]);
+            System.out.println("Select an account: (type a number) ");
+            String selectedAccountIndex = sc.next();
+            System.out.println("Amount to withdrawal : ");
+            String withdrawalAmount = sc.next();
+            makeWiithdrawal(Integer.valueOf(selectedAccountIndex), Double.valueOf(withdrawalAmount), emps[Integer.valueOf(selectedEmployeeIndex)]);
         } else {
-            //do nothing..the application ends here
+            System.out.println("You have made an invalid selection. Please try again");
         }
     }
 
-    public static void displayMenu(){
+    public static void displayMenu() {
         System.out.print("A. See a report of all account? (y/n) ");
         System.out.print("B. Make a deposit ");
         System.out.print("C. See a report of all account? (y/n) ");
         System.out.print("Make a selection (A/B/C)");
     }
 
-    public static void displayOPtionToSeeReport(Employee[] employees){
+    public static void displayAllEmployee(Employee[] employees) {
         int index = 0;
-        for(Employee employee : employees){
+        for (Employee employee : employees) {
             System.out.println(index++ + ". " + employee.toString());
         }
 
     }
 
+    public static void displayAllAccounts(Employee employee) {
+        System.out.println(employee.getFormattedAcctInfo());
+    }
 
+    public static void makeDeposit(int accountIndex, double amount, Employee employee) {
+        employee.deposit(accountIndex, amount);
+        System.out.println(amount + " has been deposited in the " + employee.getAccountList().get(accountIndex)
+                + " account of " + employee.toString());
+    }
+
+    public static void makeWiithdrawal(int accountIndex, double amount, Employee employee) {
+        employee.makeWithdrawal(accountIndex, amount);
+        System.out.println("Withdrawal made successfully");
+    }
 }
 

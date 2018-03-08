@@ -54,6 +54,10 @@ public class Employee {
         return namesOfAccount;
     }
 
+    public AccountList getAccountList(){
+        return accountList;
+    }
+
 
     public String toString() {
         return name;
@@ -62,6 +66,11 @@ public class Employee {
     public void deposit(int acctIndex, double amt) {
         Account selected = accountList.get(acctIndex);
         selected.makeDeposit(amt);
+    }
+
+    public void makeWithdrawal(int acctIndex, double amount){
+        Account selected = accountList.get(acctIndex);
+        selected.makeWithdrawal(amount);
     }
 
 }
