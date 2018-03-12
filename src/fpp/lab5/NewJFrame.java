@@ -139,7 +139,20 @@ public class NewJFrame extends JFrame {
     class RemoveDuplicateListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-
+            String newStr = "";
+            String msgText = inputText.getText();
+            Label:
+            for (int i = 0; i < msgText.length() - 1; i++) {
+                for (int j = i + 1; j < msgText.length(); j++) {
+                    if (msgText.charAt(i) == msgText.charAt(j)) {
+                        //Do nothing
+                        continue Label;
+                    }
+                }
+                newStr += msgText.charAt(i);
+            }
+            newStr += msgText.charAt(msgText.length() - 1);
+            outputText.setText(newStr);
         }
     }
 
