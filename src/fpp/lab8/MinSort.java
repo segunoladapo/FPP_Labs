@@ -25,6 +25,17 @@ public class MinSort {
         arr[j] = temp;
     }
 
+    int search(String str) {
+        int index = -1;
+        for (int i = 0; i < arr.length; i++) {
+            if (str.equals(arr[i])) {
+                index = i;
+                return index;
+            }
+        }
+        return index;
+    }
+
     //find minimum of arr between the indices bottom and top
     public int minpos(int bottom, int top) {
         String m = arr[bottom];
@@ -47,9 +58,9 @@ public class MinSort {
 
         MinSort minSort = new MinSort(new String[]{"big", "small", "tall", "short", "round", "square",
                 "enormous", "tiny", "gargantuan", "lilliputian",
-                "numberless", "none", "vast", "miniscule"});
+                "numberless", "none", "vast", "miniscule" });
         minSort.sort();
-        for(String element : minSort.arr){
+        for (String element : minSort.arr) {
             System.out.println(element);
         }
     }
