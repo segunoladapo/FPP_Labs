@@ -20,7 +20,7 @@ public class BinSearch {
 
     public static void main(String[] args) {
         BinSearch binSearch = new BinSearch();
-        boolean found = binSearch.search("abcdef", 'n');
+        boolean found = binSearch.search("abcdef", 'a');
         System.out.println("Is C found: " + found);
     }
 }
