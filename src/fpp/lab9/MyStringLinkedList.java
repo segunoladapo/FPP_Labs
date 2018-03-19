@@ -17,10 +17,13 @@ public class MyStringLinkedList {
     }
 
     String remove() {
-        Node nodeToRemove = header.next;
-        String item = nodeToRemove.value;
-        nodeToRemove.previous.next = nodeToRemove.next;
-        //nodeToRemove.previous.next = nodeToRemove.next;
+        String item = null;
+        if (header.next != null) {
+            Node nodeToRemove = header.next;
+            item = nodeToRemove.value;
+            header.next = nodeToRemove.next;
+            //nodeToRemove.previous.next = nodeToRemove.next;
+        }
         return item;
     }
 
@@ -37,6 +40,10 @@ public class MyStringLinkedList {
             node = node.next;
         }
         return found;
+    }
+
+    public boolean isEmpty() {
+        return header.next == null;
     }
 
     void printNodes() {

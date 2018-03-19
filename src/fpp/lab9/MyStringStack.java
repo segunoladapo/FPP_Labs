@@ -22,5 +22,9 @@ public class MyStringStack {
         list.printNodes();
     }
 
+    public boolean isEmpty(){
+        return list.isEmpty();
+    }
+
 
 }
