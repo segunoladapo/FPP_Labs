@@ -83,6 +83,36 @@ public class MyStringList {
 		return size;
 	}
 
+	public void sort(){
+		if(strArray == null || strArray.length <=1) return;
+		int len = strArray.length;
+		//int temp = 0;
+		for(int i = 0; i < len; ++i){
+			int nextMinPos = minpos(i,len-1);
+			swap(i,nextMinPos);
+		}
+
+	}
+	void swap(int i, int j){
+		String temp = strArray[i];
+		strArray[i] = strArray[j];
+		strArray[j] = temp;
+
+	}
+	//find minimum of arr between the indices bottom and top
+	public int minpos(int bottom, int top){
+		String m = strArray[bottom];
+		int index = bottom;
+		for(int i = bottom+1; i <= top; ++i){
+			if(strArray[i].compareTo(m)<0){
+				m = strArray[i];
+				index = i;
+			}
+		}
+		//return location of min, not the min itself
+		return index;
+	}
+
 	public static void main(String[] args){
 		MyStringList l = new MyStringList();
 		l.add("Bob");

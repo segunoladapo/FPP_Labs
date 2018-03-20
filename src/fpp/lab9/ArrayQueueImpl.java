@@ -43,4 +43,12 @@ public class ArrayQueueImpl {
         return item;
     }
 
+    public static void main(String... args){
+        ArrayQueueImpl arrayQueue = new ArrayQueueImpl();
+        arrayQueue.enqueue(1);
+        arrayQueue.enqueue(4);
+        arrayQueue.enqueue(2);
+        System.out.println(arrayQueue.deque());
+        System.out.println(arrayQueue.deque());
+    }
 }
