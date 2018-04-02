@@ -89,6 +89,10 @@ public class MyStringLinkedList {
         list.addFirst("B");
         list.addFirst("C");
         list.remove("B");
+        list.remove();
+        list.remove();
+        list.remove();
+        list.remove("B");
         list.printNodes();
     }
 }

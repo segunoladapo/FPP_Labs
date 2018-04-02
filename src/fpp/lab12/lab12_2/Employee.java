@@ -1,9 +1,11 @@
 package fpp.lab12.lab12_2;
 
+import fpp.lab12.exceptions.OverDrawnAccountException;
+import fpp.lab8.MyStringList;
+
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import lesson12.lab12_2.MyStringList;
 
 
 
@@ -44,7 +46,7 @@ public class Employee {
 		Account selected = accounts.get(acctIndex);
 		selected.makeDeposit(amt);
 	}
-	public boolean withdraw(int acctIndex, double amt){
+	public boolean withdraw(int acctIndex, double amt) throws OverDrawnAccountException {
 		Account selected = accounts.get(acctIndex);
 		return selected.makeWithdrawal(amt);
 	}	

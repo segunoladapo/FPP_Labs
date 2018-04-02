@@ -7,13 +7,39 @@ public class MyStringLinkedList {
         header = new Node(null, null, null);
     }
 
+    public void addFirstTest(String item) {
+
+        if (header.next == null) {
+            Node n = new Node(header.next, header, item);
+            header.next = n;
+        } else {
+            Node current = header.next;
+
+            if (current.value.compareTo(item) > 0) {
+                Node n = new Node(header.next, header, item);
+                header.next = n;
+                current.previous = n;
+            } else {
+
+                //if (current.next == null) {
+                //    Node n = new Node(null, current, item);
+                //    current.next = n;
+                //} else {
+                Node n = new Node(current.next, current, item);
+                // current.next.previous = n;
+                current.next = n;
+                // }
+            }
+        }
+    }
+
+
     public void addFirst(String item) {
         Node n = new Node(header.next, header, item);
         if (header.next != null) {
             header.next.previous = n;
         }
         header.next = n;
-
     }
 
     boolean remove(String data) {
@@ -69,12 +95,35 @@ public class MyStringLinkedList {
 
     public static void main(String[] args) {
         MyStringLinkedList list = new MyStringLinkedList();
-        list.addFirst("A");
-        list.addFirst("B");
-        list.addFirst("C");
-        list.remove("B");
+        list.addFirstTest("J");
+        list.addFirstTest("A");
+        list.addFirstTest("B");
+        list.addFirstTest("C");
+        //list.addFirstTest("A");
+        // System.out.println(list.header.next.previous.next.value);
+
+        //     list.remove("B");
         list.printNodes();
     }
+
+    public void addFirstAnother(String item) {
+
+        if (header.next == null) {
+            Node node = new Node(header.next, header, item);
+            header.next = node;
+        } else {
+            Node currentNode = header.next;
+            if(currentNode.value.compareTo(item) > 0){
+                Node node = new Node(header.next, header, item);
+                header.next = node;
+            }else{
+                Node node = new Node(currentNode.next, currentNode, item);
+                currentNode.next = node;
+            }
+        }
+
+    }
+
 }
 
 

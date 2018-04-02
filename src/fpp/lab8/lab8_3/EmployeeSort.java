@@ -31,7 +31,7 @@ public class EmployeeSort {
 
 
         HireDateComparator dateComparator = new HireDateComparator();
-        //Collections.sort(empList, dateComparator);
+        Collections.sort(empList, dateComparator);
 
        // System.out.println(empList);
 
