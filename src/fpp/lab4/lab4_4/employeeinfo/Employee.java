@@ -1,22 +1,20 @@
 package fpp.lab4.lab4_4.employeeinfo;
 
-
-import fpp.lab4.lab4_4.employeeinfo.AccountList;
+import fpp.lab3.StringList;
+import fpp.lab4.lab4_4.*;
 
 import java.time.LocalDate;
 
 public class Employee {
 
-    private Account savingsAcct;
-    private Account checkingAcct;
-    private Account retirementAcct;
     private String name;
     private LocalDate hireDate;
+    private AccountList accountList = new AccountList();
 
     public Employee(String name, int yearOfHire, int monthOfHire, int dayOfHire) {
         this.name = name;
 /* update, using LocalDate
-		GregorianCalendar cal = new GregorianCalendar(yearOfHire,monthOfHire-1,dayOfHire);
+        GregorianCalendar cal = new GregorianCalendar(yearOfHire,monthOfHire-1,dayOfHire);
 		hireDate = cal.getTime();
 */
         hireDate = LocalDate.of(yearOfHire, monthOfHire, dayOfHire);
@@ -25,29 +23,39 @@ public class Employee {
 
 
     public void createNewChecking(double startAmount) {
-        checkingAcct = new CheckingAccount(this, startAmount);
-        AccountList.accountList.add(checkingAcct);
+        Account checkingAcct = new CheckingAccount(this, startAmount);
+        accountList.add(checkingAcct);
     }
 
     public void createNewSavings(double startAmount) {
-        savingsAcct = new SavingsAccount(this, startAmount);
-        AccountList.accountList.add(savingsAcct);
+        Account savingsAcct = new SavingsAccount(this, startAmount);
+        accountList.add(savingsAcct);
     }
 
     public void createNewRetirement(double startAmount) {
-        retirementAcct = new RetirementAccount(this, startAmount);
-        AccountList.accountList.add(retirementAcct);
+        Account retirementAcct = new RetirementAccount(this, startAmount);
+        accountList.add(retirementAcct);
     }
 
     public String getFormattedAcctInfo() {
-        // implement
         StringBuilder accountInfoMsg = new StringBuilder();
-        accountInfoMsg.append(checkingAcct.toString());
-        accountInfoMsg.append('\n');
-        accountInfoMsg.append(savingsAcct.toString());
-        accountInfoMsg.append('\n');
-        accountInfoMsg.append(retirementAcct.toString());
+        for (int i = 0; i < accountList.size(); i++) {
+            accountInfoMsg.append(i + ". " + accountList.get(i).getAcctType());
+            accountInfoMsg.append('\n');
+        }
         return accountInfoMsg.toString();
+    }
+
+    public StringList getNamesOfAccounts() {
+        StringList namesOfAccount = new StringList();
+        for (int i = 0; i < accountList.size(); i++) {
+            namesOfAccount.add(accountList.get(i).getAcctType().name());
+        }
+        return namesOfAccount;
+    }
+
+    public AccountList getAccountList(){
+        return accountList;
     }
 
 
@@ -56,8 +64,13 @@ public class Employee {
     }
 
     public void deposit(int acctIndex, double amt) {
-        Account selected = acc.get(acctIndex);
+        Account selected = accountList.get(acctIndex);
         selected.makeDeposit(amt);
+    }
+
+    public void makeWithdrawal(int acctIndex, double amount){
+        Account selected = accountList.get(acctIndex);
+        selected.makeWithdrawal(amount);
     }
 
 }

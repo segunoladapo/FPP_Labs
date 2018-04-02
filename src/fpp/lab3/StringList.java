@@ -1,7 +1,7 @@
 package fpp.lab3;
 public class StringList {
 
-    private String[] listOfString = new String[50];
+    private String[] listOfString = new String[2];
     private int size = 0;
     public StringList(){
     }
